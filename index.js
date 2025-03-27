@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+var cors = require("cors");
 // connect to the database
 require("./database");
 const Todo = require("./models/Todo");
@@ -10,6 +11,7 @@ const PORT = 3030;
 // defines a middleware that accepts json from users and adds
 // the parsed result to 'req.body'
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.json({ message: "Success!", routes: ["/todos", "/todos/:todoId"] });
